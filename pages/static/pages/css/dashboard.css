@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.botao_logout{
+    max-width: 8rem;
+    max-height: 7rem;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+h1{
+    color: aliceblue;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(37, 114, 53);
+    width: 100%;
+    height: 4em;
+}
+nav{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    background-color: rgb(206, 227, 206);
+}
+main{
+    display: flex;
+    flex:1;
+    background-color: rgb(228, 236, 228);
+
+}
+.btn_dash{
+    width: 100%;
+}
+.card_customers{
+    flex:1;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card_customers--agend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.form_agend {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 25px;
+    background-color: rgb(233, 244, 238);
+    gap: 10px;
+    
+}

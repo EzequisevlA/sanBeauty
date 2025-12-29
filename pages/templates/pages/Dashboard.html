@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'pages/css/dashboard.css'%}">
+</head>
+<body>
+    <header>
+        <h1>Gestão de clientes</h1> <input type="button" value="Logout" class="botao_logout" data-url="{% url 'logout' %}" id="btn_logout">
+    </header>
+    
+    <main>
+        <nav>
+            <input type="button" value="Agendar" id="btn_agendar" class="btn_dash" onclick="changeCard()">
+            <input type="button" value="Agendamentos" class="btnClientes" id="btnClientes">
+        </nav>
+        <template id="template_card">
+            <form method="POST" action="{% url 'add_customer' %}" class="form_agend" id="card_customers--agend">
+
+                {% csrf_token %}
+                {{ form.first_name }}
+                {{ form.second_name }}
+                {{ form.phone }}
+                {{ form.date }}  {# Aqui vai aparecer como datetime-local #}
+                {{ form.professional }}
+                {{ form.services }}
+                <button type="submit">Salvar</button>
+            </form>
+
+
+        
+
+            
+
+        </template>
+        <div class="card_customers" id="card_customers">
+            <ul class="customer-list">
+                {% for customer in customers %}
+                    <li>
+                        <strong>{{ customer.first_name }} {{ customer.second_name }}</strong><br>
+                        📞 {{ customer.phone }}<br>
+                        📅 {{ customer.date }}<br>
+                        👤 {{ customer.professional }}
+                    </li>
+                {% empty %}
+                    <li>Nenhum cliente cadastrado.</li>
+                {% endfor %}
+            </ul>
+            
+                        
+        </div>
+    
+    </main>
+    
+    <script src="{% static 'pages/js/dashboard.js'%}"></script>
+</body>
+</html>

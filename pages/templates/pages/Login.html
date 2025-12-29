@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'pages/css/login.css' %}">
+    
+</head>
+<body>
+    <div class="card">
+        <form action="">
+            {% csrf_token %}
+            <input type="email" name="" id="username" required>
+            <input type="password" name="" id="password" required>
+            <input type="button" value="Login" id="btn" data-url="{% url 'ajax_login' %}" >
+            <div id="error"></div>
+        </form>
+
+
+    </div>
+    <script src="{% static 'pages/js/login.js'%}"></script>
+</body>
+</html>
