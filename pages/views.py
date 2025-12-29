@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from .forms import CustomerForm
 
 # Create your views here.
+
 def ajax_login(request):
     if request.method == "POST":
         data = json.loads(request.body)
@@ -21,7 +22,7 @@ def ajax_login(request):
         else:
             return JsonResponse({"success": False})
     return render(request, "pages/Login.html")
-
+@login_required
 def add_customer(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST)
@@ -49,7 +50,7 @@ def dashboard(request):
 
     return render(request, "pages/Dashboard.html", context)
 
-
+@login_required
 def customer_list(request):
     customers = Customer.objects.all()
     return render(request, 'pages/CustomerLists.html',{
