@@ -52,6 +52,6 @@ def dashboard(request):
 
 def customer_list(request):
     customers = Customer.objects.all()
-    return render(request, 'pages/Dashboard.html',{
+    return render(request, 'pages/CustomerLists.html',{
         'customers':customers
     })

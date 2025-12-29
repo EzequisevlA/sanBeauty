@@ -37,18 +37,7 @@
 
         </template>
         <div class="card_customers" id="card_customers">
-            <ul class="customer-list">
-                {% for customer in customers %}
-                    <li>
-                        <strong>{{ customer.first_name }} {{ customer.second_name }}</strong><br>
-                        📞 {{ customer.phone }}<br>
-                        📅 {{ customer.date }}<br>
-                        👤 {{ customer.professional }}
-                    </li>
-                {% empty %}
-                    <li>Nenhum cliente cadastrado.</li>
-                {% endfor %}
-            </ul>
+                
             
                         
         </div>

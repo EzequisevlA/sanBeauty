@@ -1,0 +1,49 @@
+.customer-list {
+    list-style: none;      /* remove bolinhas */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* CADA LINHA */
+.customer-row {
+    display: grid;
+    grid-template-columns:
+        2.5fr   /* Nome */
+        1.5fr   /* Telefone */
+        2fr     /* Agendamento */
+        2fr    /* Profissional */
+        2fr;
+
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* CABEÇALHO */
+.customer-row.header {
+    font-weight: bold;
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+/* TEXTO */
+.col-name {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.col-phone,
+.col-services
+.col-date,
+.col-prof {
+    white-space: nowrap;
+}
+
+/* HOVER */
+.customer-row:not(.header):hover {
+    background-color: #f3f6f3;
+}

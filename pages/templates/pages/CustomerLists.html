@@ -1,0 +1,41 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'pages/css/customerLists.css'%}">
+</head>
+<ul class="customer-list">
+    <li class="customer-row header">
+        <span>Nome</span>
+        <span>Telefone</span>
+        <span>Agendamento</span>
+        <span>Profissional</span>
+        <spa>Serviços</spa>
+    </li>
+
+    {% for customer in customers %}
+    <li class="customer-row">
+        <span class="col-name">
+            {{ customer.first_name }} {{ customer.second_name }}
+        </span>
+
+        <span class="col-phone">
+            📞 {{ customer.phone }}
+        </span>
+
+        <span class="col-date">
+            📅 {{ customer.date }}
+        </span>
+
+        <span class="col-prof">
+            👤 {{ customer.professional }}
+        </span>
+        <span class="col-services">
+            {% for service in customer.services.all %}
+                {{service}}{%if not forloop.last%}, {%endif%}
+            {% empty %}
+                -
+            {%endfor%}    
+        </span>
+
+    </li>
+    {% endfor %}
+</ul>
