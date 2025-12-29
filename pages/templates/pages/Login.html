@@ -12,8 +12,8 @@
     <div class="card">
         <form action="">
             {% csrf_token %}
-            <input type="email" name="" id="username" required>
-            <input type="password" name="" id="password" required>
+            <input type="email" name="" id="username" required placeholder="login">
+            <input type="password" name="" id="password" required placeholder="senha">
             <input type="button" value="Login" id="btn" data-url="{% url 'ajax_login' %}" >
             <div id="error"></div>
         </form>
