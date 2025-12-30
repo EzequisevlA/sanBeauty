@@ -1,5 +1,6 @@
 from django import forms
-from .models import Customer
+from .models import Customer , Service
+
 
 class CustomerForm(forms.ModelForm):
     class Meta:
@@ -12,4 +13,11 @@ class CustomerForm(forms.ModelForm):
             'date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             'professional': forms.Select(),
             'services': forms.SelectMultiple(),
+        }
+class ServiceForm(forms.ModelForm):
+    class Meta:
+        model = Service
+        fields = ["name"]
+        widgets={
+            'name': forms.TextInput(attrs={'placeholder':'Informe o serviço'})
         }

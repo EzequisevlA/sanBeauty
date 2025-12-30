@@ -6,7 +6,8 @@ from .models import Professionals, Customer
 from django.http import HttpResponse
 from django.template import loader
 from django.http import JsonResponse
-from .forms import CustomerForm
+from .forms import CustomerForm, ServiceForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -27,10 +28,10 @@ def add_customer(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST)
         if form.is_valid():
-            form.save()  # salva no SQLite
-            return redirect('add_customer')  # ou qualquer página de sucesso
+            form.save()  
+            return redirect('add_customer') 
         else:
-            print(form.errors)  # adiciona isso para ver erros no console
+            print(form.errors)  
     else:
         form = CustomerForm()
     return render(request, 'pages/Dashboard.html', {'form': form})
@@ -56,3 +57,26 @@ def customer_list(request):
     return render(request, 'pages/CustomerLists.html',{
         'customers':customers
     })
+
+@login_required
+def configuration_menu(request):
+    form = ServiceForm()
+    return render(request,'pages/Configuration.html',{'form':form})
+
+@login_required
+def add_service(request):
+    if request.method == 'POST':
+        form = ServiceForm(request.POST)
+
+        if form.is_valid():
+            
+            form.save()
+            messages.success(request, "Serviço cadastrado com sucesso!")
+            return redirect('add_customer') 
+    
+    # Se a requisição não for POST ou o formulário for inválido, renderiza a página do formulário
+    else:
+        form = ServiceForm()
+
+    return render(request, 'Configuration.html', {'form': form})
+            

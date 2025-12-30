@@ -16,6 +16,7 @@
         <nav>
             <input type="button" value="Agendar" id="btn_agendar" class="btn_dash" onclick="changeCard()">
             <input type="button" value="Agendamentos" class="btnClientes" id="btnClientes">
+            <input type="button" value="Configuração" class="btnConfig" id="btnConfig">
         </nav>
         <template id="template_card">
             <form method="POST" action="{% url 'add_customer' %}" class="form_agend" id="card_customers--agend">
@@ -37,7 +38,7 @@
 
         </template>
         <div class="card_customers" id="card_customers">
-                
+
             
                         
         </div>

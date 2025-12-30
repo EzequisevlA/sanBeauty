@@ -9,6 +9,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(() => window.location.href = '/');
         };
     }
+    const btnConfig = document.getElementById("btnConfig");
+    if(btnConfig){
+        console.log("teste")
+        btnConfig.addEventListener("click", ()=>{
+            const container =document.getElementById("card_customers")
+            fetch("/configuration/")
+            .then(response=> response.text())
+            .then(html =>{
+                container.innerHTML = html
+                container.style.display='block'
+            })
+            .catch(err => console.log(err))
+        })
+    }
+    
 
     // LISTAR CLIENTES
     const btnClientes = document.getElementById("btnClientes");

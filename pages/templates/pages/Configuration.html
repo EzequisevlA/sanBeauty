@@ -1,0 +1,18 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'pages/css/configuration.css'%}">
+</head>
+
+<div class="Card_config">
+    
+    <form action="{% url 'add_service' %}" method="POST" id="form-service">
+        {% csrf_token %}
+        {{form.name}}
+        <input type="submit" value="Salvar">
+    </form>
+
+   
+<script src="{% static '/pages/js/login.js' %}"></script>
+
+
+</div>
