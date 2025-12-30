@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     }
     
+    
 
     // LISTAR CLIENTES
     const btnClientes = document.getElementById("btnClientes");
