@@ -1,57 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Função auxiliar para carregar conteúdo (Evita repetição)
+    const loadContent = (url, containerId) => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error("Erro ao carregar página");
+                return response.text();
+            })
+            .then(html => {
+                container.innerHTML = html;
+                container.style.display = 'block';
+            })
+            .catch(err => console.error("Erro na requisição:", err));
+    };
+
     // LOGOUT
-    const btn_logout = document.getElementById("btn_logout");
-    if (btn_logout) {
-        btn_logout.onclick = function () {
-            const url = btn_logout.dataset.url;
-            fetch(url, { method: "GET" })
+    const btnLogout = document.getElementById("btn_logout");
+    if (btnLogout) {
+        btnLogout.onclick = () => {
+            fetch(btnLogout.dataset.url, { method: "GET" })
                 .then(() => window.location.href = '/');
         };
     }
+
+    // CONFIGURAÇÃO
     const btnConfig = document.getElementById("btnConfig");
-    if(btnConfig){
-        console.log("teste")
-        btnConfig.addEventListener("click", ()=>{
-            const container =document.getElementById("card_customers")
-            fetch("/configuration/")
-            .then(response=> response.text())
-            .then(html =>{
-                container.innerHTML = html
-                container.style.display='block'
-            })
-            .catch(err => console.log(err))
-        })
+    if (btnConfig) {
+        btnConfig.addEventListener("click", () => {
+            loadContent("/configuration/", "card_customers");
+        });
     }
-    
-    
 
     // LISTAR CLIENTES
     const btnClientes = document.getElementById("btnClientes");
-    if (!btnClientes) return;
-
-    btnClientes.addEventListener("click", () => {
-        const container = document.getElementById("card_customers");
-
-        fetch("/customers/list/")  // URL REAL
-            .then(response => response.text())
-            .then(html => {
-                container.innerHTML = html;
-                container.style.display = "block";
-            })
-            .catch(err => console.error(err));
-    });
+    if (btnClientes) {
+        btnClientes.addEventListener("click", () => {
+            loadContent("/customers/list/", "card_customers");
+        });
+    }
 });
 
-// CARD
+// CARD TEMPLATE
 function changeCard() {
-    const card_container = document.getElementById('card_customers');
-    const temporary = document.getElementById('template_card');
+    const container = document.getElementById('card_customers');
+    const template = document.getElementById('template_card');
 
-    if (!temporary) return;
-
-    const clone = temporary.content.cloneNode(true);
-    card_container.innerHTML = '';
-    card_container.appendChild(clone);
-    //card_container.classList.add("card_customers--agend");//
+    if (container && template) {
+        const clone = template.content.cloneNode(true);
+        container.innerHTML = ''; // Limpa o conteúdo atual
+        container.appendChild(clone);
+    }
 }
