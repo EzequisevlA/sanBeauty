@@ -34,6 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
             loadContent("/customers/list/", "card_customers");
         });
     }
+    const btnConfig = document.getElementById("btnConfig");
+    if (btnConfig) {
+        btnConfig.addEventListener("click", () => {
+            loadContent("/configuration/", "card_customers");
+        });
+    }
+
 });
 
 // CARD TEMPLATE
@@ -46,11 +53,4 @@ function changeCard() {
         container.innerHTML = ''; // Limpa o conteúdo atual
         container.appendChild(clone);
     }
-}
-function config(){
-    
-    loadContent("/configuration/", "card_customers");
-    
-
-
 }
